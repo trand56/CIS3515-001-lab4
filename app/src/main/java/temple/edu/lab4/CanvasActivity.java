@@ -19,10 +19,11 @@ public class CanvasActivity extends AppCompatActivity {
         TextView colText = findViewById(R.id.color_text);
 
         Intent in = getIntent();
-        String col = in.getStringExtra(getResources().getString(R.string.color_id));
+        String colname = in.getStringExtra(getResources().getString(R.string.color_name));
+        int colval = in.getIntExtra(getResources().getString(R.string.color_value), Color.BLACK);
 
-        colText.setText(col);
-        canvas.setBackgroundColor(Color.parseColor(col));
+        colText.setText(colname);
+        canvas.setBackgroundColor(colval);
 
     }
 }

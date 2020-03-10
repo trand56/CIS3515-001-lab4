@@ -14,24 +14,26 @@ import android.widget.TextView;
 public class ColorAdapter extends BaseAdapter{
 
     private Context context;
-    private String[] colors;
+    private String[] colorNames;
+    private String[] colorHexes;
 
     public ColorAdapter(Context context)
     {
         super();
         this.context = context;
-        this.colors = context.getResources().getStringArray(R.array.color_names_array);
+        this.colorNames = context.getResources().getStringArray(R.array.color_names_array);
+        this.colorHexes = context.getResources().getStringArray(R.array.color_hex_array);
     }
 
     @Override
     public int getCount(){
-        return colors.length;
+        return colorNames.length;
     }
 
     @Override
     public Object getItem(int position)
     {
-        return isBetween(position, 0, this.colors.length) ? this.colors[position] : null;
+        return isBetween(position, 0, this.colorNames.length) ? this.colorNames[position] : null;
     }
 
     @Override
@@ -42,7 +44,8 @@ public class ColorAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-        if(!isBetween(position, 0, this.colors.length))
+        if( !isBetween(position, 0, this.colorNames.length) &&
+            !isBetween(position, 0, this.colorHexes.length))
             return null;
 
         TextView newView = (TextView)convertView;
@@ -53,8 +56,8 @@ public class ColorAdapter extends BaseAdapter{
             newView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24 );
         }
 
-        newView.setText(this.colors[position]);
-        newView.setBackgroundColor(Color.parseColor(this.colors[position]));
+        newView.setText(this.colorNames[position]);
+        newView.setBackgroundColor(Color.parseColor(this.colorHexes[position]));
 
         return newView;
     }

@@ -3,6 +3,7 @@ package temple.edu.lab4;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,7 +27,9 @@ public class PaletteActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(loaded) {
                     Intent intentCanvas = new Intent(PaletteActivity.this, CanvasActivity.class);
-                    intentCanvas.putExtra(getResources().getString(R.string.color_id), ((TextView) view).getText());
+                    TextView colorView = (TextView)view;
+                    intentCanvas.putExtra(getResources().getString(R.string.color_name), colorView.getText());
+                    intentCanvas.putExtra(getResources().getString(R.string.color_value), ((ColorDrawable)colorView.getBackground()).getColor());
                     startActivity(intentCanvas);
                 }
                 else loaded = true;
