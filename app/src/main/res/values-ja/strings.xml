@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">lab4</string>
+    <string name="color_name">colorName</string>
+    <string name="color_value">colorValue</string>
+
+    <string-array
+        name="color_names_array">
+        <item>チィール</item>
+        <item>赤</item>
+        <item>青</item>
+        <item>黄</item>
+        <item>紫</item>
+        <item>白</item>
+        <item>ライトグレー</item>
+        <item>グレー</item>
+        <item>ダークグレー</item>
+        <item>黒</item>
+        <item>ライム</item>
+        <item>ネイビー</item>
+        <item>アクア</item>
+        <item>フクシア</item>
+        <item>オリーブ</item>
+    </string-array>
+
+    <string-array
+        name="color_hex_array">
+        <item>#008080</item>
+        <item>#FF0000</item>
+        <item>#0000FF</item>
+        <item>#FFFF00</item>
+        <item>#800080</item>
+        <item>#FFFFFF</item>
+        <item>#D3D3D3</item>
+        <item>#808080</item>
+        <item>#696969</item>
+        <item>#000000</item>
+        <item>#00FF00</item>
+        <item>#000080</item>
+        <item>#00FFFF</item>
+        <item>#FF00FF</item>
+        <item>#808000</item>
+    </string-array>
+</resources>
