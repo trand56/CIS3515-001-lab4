@@ -1,4 +1,23 @@
 <resources>
     <string name="app_name">lab4</string>
     <string name="color_id">color</string>
+
+    <string-array
+        name="color_names_array">
+        <item>Teal</item>
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Yellow</item>
+        <item>Purple</item>
+        <item>White</item>
+        <item>LightGray</item>
+        <item>Gray</item>
+        <item>DarkGray</item>
+        <item>Black</item>
+        <item>Lime</item>
+        <item>Navy</item>
+        <item>Aqua</item>
+        <item>Fuchsia</item>
+        <item>Olive</item>
+    </string-array>
 </resources>

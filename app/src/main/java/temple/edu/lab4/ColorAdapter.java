@@ -20,9 +20,7 @@ public class ColorAdapter extends BaseAdapter{
     {
         super();
         this.context = context;
-        this.colors = new String[]{ "Teal", "Red", "Blue", "Yellow", "Purple",
-                "White", "LightGray", "Gray", "DarkGray", "Black",
-                "Lime", "Navy", "Aqua", "Fuchsia", "Olive"};
+        this.colors = context.getResources().getStringArray(R.array.color_names_array);
     }
 
     @Override
