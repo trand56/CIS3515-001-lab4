@@ -26,7 +26,7 @@ public class PaletteActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(loaded) {
                     Intent intentCanvas = new Intent(PaletteActivity.this, CanvasActivity.class);
-                    intentCanvas.putExtra("color", ((TextView) view).getText());
+                    intentCanvas.putExtra(getResources().getString(R.string.color_id), ((TextView) view).getText());
                     startActivity(intentCanvas);
                 }
                 else loaded = true;
