@@ -1,6 +1,7 @@
-# CIS3515-001-lab4
-Assignment 4 AND 5 of mobile dev
+# CIS3515-001-lab5
+Assignment 5 of mobile dev
 
+Extension of lab 4
 
 # IMAGES
 
