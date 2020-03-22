@@ -107,11 +107,8 @@ public class PaletteFragment extends Fragment {
         parentActivity = null;
     }
 
-    public static PaletteFragment newInstance(String[] colors){
+    public static PaletteFragment newInstance(){
         PaletteFragment fragment = new PaletteFragment();
-        Bundle bundle = new Bundle();
-        bundle.putStringArray("colors", colors);
-        fragment.setArguments(bundle);
         return fragment;
     }
 

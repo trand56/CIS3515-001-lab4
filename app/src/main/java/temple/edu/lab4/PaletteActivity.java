@@ -19,7 +19,7 @@ public class PaletteActivity extends AppCompatActivity implements PaletteFragmen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PaletteFragment palfrag = PaletteFragment.newInstance(getResources().getStringArray(R.array.color_names_array));
+        PaletteFragment palfrag = PaletteFragment.newInstance();
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.container1, palfrag)
@@ -53,7 +53,13 @@ public class PaletteActivity extends AppCompatActivity implements PaletteFragmen
     }
 
     public void onColorSelected(String colorName, int colorValue){
-        Toast.makeText(this, colorName + ", " + colorValue, Toast.LENGTH_SHORT).show();
+        CanvasFragment canfrag = CanvasFragment.newInstance(colorName, colorValue);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.container2, canfrag)
+                .addToBackStack(null)
+                .commit();
     }
 
 }
