@@ -9,8 +9,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class PaletteActivity extends AppCompatActivity {
+public class PaletteActivity extends AppCompatActivity implements PaletteFragment.ColorSelectorInterface {
 
     private boolean loaded = false;
     @Override
@@ -18,6 +19,14 @@ public class PaletteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        PaletteFragment palfrag = PaletteFragment.newInstance(getResources().getStringArray(R.array.color_names_array));
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.container1, palfrag)
+                .commit();
+
+
+        /*
         ColorAdapter colAdapter = new ColorAdapter(this);
         Spinner colSpin = findViewById(R.id.color_spinner);
         colSpin.setAdapter(colAdapter);
@@ -40,6 +49,11 @@ public class PaletteActivity extends AppCompatActivity {
 
             }
         });
-
+        */
     }
+
+    public void onColorSelected(String colorName, int colorValue){
+        Toast.makeText(this, colorName + ", " + colorValue, Toast.LENGTH_SHORT).show();
+    }
+
 }

@@ -1,6 +1,8 @@
 package temple.edu.lab4;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,16 +11,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link PaletteFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link PaletteFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PaletteFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,7 +26,7 @@ public class PaletteFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private Context parentActivity;
 
     public PaletteFragment() {
         // Required empty public constructor
@@ -62,25 +59,42 @@ public class PaletteFragment extends Fragment {
         }
     }
 
+    private boolean loaded = false;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_palette, container, false);
+        View layout = inflater.inflate(R.layout.fragment_palette, container, false);
+        ColorAdapter colAdapter = new ColorAdapter(parentActivity);
+        Spinner colSpin = layout.findViewById(R.id.color_spinner);
+        colSpin.setAdapter(colAdapter);
+
+        colSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(loaded) {
+                    TextView colorView = (TextView)view;
+                    ((ColorSelectorInterface)parentActivity).onColorSelected(colorView.getText().toString(),
+                            ((ColorDrawable)colorView.getBackground()).getColor());
+                }
+                else loaded = true;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        return layout;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof ColorSelectorInterface) {
+            parentActivity = context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -90,7 +104,7 @@ public class PaletteFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        parentActivity = null;
     }
 
     public static PaletteFragment newInstance(String[] colors){
@@ -101,18 +115,9 @@ public class PaletteFragment extends Fragment {
         return fragment;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
+
+    public interface ColorSelectorInterface {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onColorSelected(String colorName, int colorValue);
     }
 }
