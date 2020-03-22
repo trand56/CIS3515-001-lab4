@@ -3,8 +3,7 @@
     <string name="color_name">colorName</string>
     <string name="color_value">colorValue</string>
 
-    <string-array
-        name="color_names_array">
+    <string-array name="color_names_array">
         <item>Teal</item>
         <item>Red</item>
         <item>Blue</item>
@@ -22,8 +21,7 @@
         <item>Olive</item>
     </string-array>
 
-    <string-array
-        name="color_hex_array">
+    <string-array name="color_hex_array">
         <item>#008080</item>
         <item>#FF0000</item>
         <item>#0000FF</item>
@@ -40,4 +38,7 @@
         <item>#FF00FF</item>
         <item>#808000</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
